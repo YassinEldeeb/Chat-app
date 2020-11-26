@@ -1,0 +1,189 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+}
+html {
+  font-size: 62.5%;
+}
+
+.drawer {
+  background: #ebeff2;
+  font-size: 2.5rem;
+  display: inline-block;
+  min-width: 350px;
+  max-height: 340px;
+  overflow-y: scroll;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(65%, -17%);
+  opacity: 0;
+  border-radius: 1rem;
+  pointer-events: none;
+}
+.historyEmojisDiv span {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.drawer-active {
+  pointer-events: all;
+  opacity: 1;
+  transform: translate(65%, -17%);
+}
+.type img {
+  width: 39px;
+  height: 39px;
+}
+.type {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  background: #e3e7e8;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0.5rem 0.75rem;
+  position: sticky;
+  top: 0;
+}
+.emojis span,
+.historyEmojisDiv {
+  cursor: pointer;
+  padding: 0.6rem;
+  webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.emojis span:hover,
+.historyEmojisDiv span:hover,
+.historyEmojis span:hover {
+  background: #d8dcdf;
+  border-radius: 20%;
+}
+.emojis,
+.historyEmojisDiv {
+  padding: 1.7rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(4rem, 1fr));
+}
+
+.type span,
+.type img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  cursor: pointer;
+  padding: 0.4rem;
+  margin: 0.1rem;
+}
+.type span:hover,
+.type img:hover {
+  background: #dfe1e2;
+  border-radius: 20%;
+}
+
+.div {
+  position: relative;
+  flex: 1 1 30rem;
+  display: flex;
+}
+.emoji-icon-add-one {
+  webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.emoji-icon {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-5%, -43%) rotate(-180deg);
+  cursor: pointer;
+  font-size: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2.1rem;
+  padding-right: 0;
+  webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+.emoji-icon-active {
+  padding-right: 2.1rem;
+  padding-left: 0;
+  transform: translate(-5%, -55%) rotate(0deg);
+}
+
+.typ-emoji-active {
+  border-radius: 20%;
+  background: #c7cbce;
+}
+.historyEmojisDiv {
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  display: grid;
+  min-height: 280px;
+}
+.historyEmojisDiv-disbaled {
+  display: none;
+}
+.emojis {
+  display: none;
+}
+.emojis-enabled {
+  display: grid;
+}
+@media screen and (max-width: 700px) {
+  .historyEmojisDiv {
+    min-height: 200px;
+  }
+  .drawer {
+    font-size: 16px;
+    min-width: 250px;
+    max-width: 210px;
+    max-height: 300px;
+  }
+  .emojis,
+  .historyEmojisDiv {
+    font-size: 22px;
+  }
+  .type img {
+    width: 23px;
+    height: 23px;
+  }
+  .type img,
+  .type span {
+    font-size: 15px;
+    width: 25px;
+    height: 25px;
+  }
+  .historyEmojisDiv {
+    transform: translateY(8%);
+  }
+  .deleteIcon {
+    transform: translateY(-8%);
+  }
+}
+@media screen and (max-width: 750px) {
+  .historyEmojisDiv span {
+    font-size: 3.2rem;
+  }
+  .drawer {
+    transform: translate(37%, -20%);
+    max-height: 240px;
+  }
+  .drawer-active {
+    transform: translate(37%, -20%);
+  }
+  .historyEmojisDiv {
+    padding-top: 0;
+    max-height: 140px;
+    grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  }
+}

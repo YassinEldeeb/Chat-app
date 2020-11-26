@@ -1,0 +1,400 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+a {
+  color: rgb(56, 56, 56);
+}
+html {
+  font-size: 62.5%;
+}
+#title {
+  text-align: center;
+  padding: 2.4rem 0rem;
+  font-size: 4.5rem;
+  color: rgb(35, 140, 238);
+}
+.message-text {
+  word-wrap: break-word;
+}
+.message {
+  max-width: 60%;
+  border-radius: 2rem;
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.9rem 1.8rem;
+  background: whitesmoke;
+  font-size: calc(0.8rem + 1vw);
+}
+.Mapbox-map {
+  width: 400px;
+  height: 300px;
+  border-radius: 2rem;
+}
+.location-message {
+  padding: 1rem;
+}
+.chat-messages {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  padding: calc(1rem + 1.7vh) calc(2rem + 2vw);
+  flex: 1 1 20rem;
+  overflow-y: scroll;
+}
+#fileInput {
+  display: none;
+}
+.settings-mobile {
+  display: none;
+}
+.fileUpload-active {
+  animation: errorUploading 0.05s alternate 0.2s;
+  animation-iteration-count: 10;
+  background: #ec3d3d !important;
+  transition: 0.4s ease-in-out;
+}
+.image-added {
+  width: 100%;
+  max-width: 450px;
+  object-fit: contain;
+  height: 100%;
+  max-height: 450px;
+  border-radius: 2rem;
+  border-top-left-radius: 0;
+}
+.timestamp {
+  font-size: calc(0.2rem + 1vw);
+  font-weight: 300;
+  color: #777777;
+}
+.sender {
+  font-size: calc(0.3rem + 1vw);
+  margin-right: calc(0.1rem + 0.5vw);
+
+  color: #333333;
+}
+.info {
+  margin-bottom: 0.6rem;
+}
+@keyframes errorUploading {
+  from {
+    transform: translateX(-7%);
+  }
+  to {
+    transform: translateX(7%);
+  }
+}
+.chat-cont {
+  max-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat-room {
+  flex: 0.5 0.5 30rem;
+  background: #333744;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.chat {
+  flex: 1 1 90rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 13vh;
+  padding: 0.5rem 0;
+  background: #f0f0f0;
+}
+.logo {
+  height: 100%;
+  width: 15%;
+}
+.logo svg {
+  width: 100%;
+  height: 100%;
+}
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: calc(1rem + 1.6vh) 0;
+}
+#chattingForm {
+  margin-left: calc(2rem + 2vw);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#chattingForm input {
+  flex: 1 1 30rem;
+  margin-right: 1rem;
+  padding: 1.2rem 1.7rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #ebebeb;
+  font-size: calc(0.7rem + 1vw);
+  padding-right: 4.5rem;
+}
+#chattingForm button {
+  height: 100%;
+}
+#chattingForm button,
+#sendLocation {
+  margin-right: 1rem;
+  padding: 1.5rem 3rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #238cee;
+  color: white;
+  font-size: calc(0.4rem + 1vw);
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+#fileLabel {
+  border-radius: 0.6rem;
+  background: #238cee;
+  padding: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.05s ease-in-out;
+  margin-right: calc(2rem + 2vw);
+}
+#sendLocation {
+  background: #ebebeb !important;
+  color: #238cee !important;
+  font-size: calc(0.4rem + 1vw) !important;
+  transition: 0.1s ease-in-out !important;
+}
+#sendLocation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#sendLocation svg {
+  min-width: 18px;
+  min-height: 19px;
+}
+#chattingForm button.sendingMessage {
+  background: #238ceebd !important;
+  cursor: unset !important;
+}
+#sendLocation.sendingLocation {
+  background: #f7f7f7 !important;
+  cursor: unset !important;
+}
+#imgUploadIcon {
+  pointer-events: all;
+  transition: 0.05s ease-in-out;
+  transform: rotate(0deg) translateY(0%);
+}
+.progress-Image {
+  animation: rotatingImage 0.4s alternate infinite;
+}
+.imageUploadIcon-active {
+  pointer-events: none !important;
+  background: #238ceed1 !important;
+  cursor: unset !important;
+  transition: 0.5s ease-in-out !important;
+}
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.settings {
+  position: absolute;
+  right: 4%;
+  top: 4%;
+  width: 3%;
+  cursor: pointer;
+}
+.chat-room-mobile {
+  display: none;
+}
+.location-message {
+  max-width: unset;
+}
+@keyframes rotatingImage {
+  from {
+    transform: translateY(20%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@media screen and (max-width: 1050px) {
+  #sendLocation svg {
+    width: 5px;
+    height: 6px;
+  }
+}
+@media screen and (min-width: 1750px) {
+  .image-added {
+    width: 100%;
+    max-width: 700px;
+    object-fit: contain;
+    height: 100%;
+    max-height: 700px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .settings {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    width: 4%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .settings {
+    position: absolute;
+    right: 3%;
+    top: 3%;
+    width: 5%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .settings {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .settings {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    width: 6%;
+  }
+  .chat-messages {
+    padding: calc(1rem + 1.7vh) calc(1rem + 2vw);
+  }
+  .message {
+    padding: 1rem 1.8rem;
+  }
+  .location-message {
+    padding: 0.8rem;
+  }
+  .sender {
+    font-size: calc(1rem + 1vw);
+  }
+  .timestamp {
+    font-size: calc(0.9rem + 1vw);
+  }
+}
+@media screen and (max-width: 375px) {
+  .settings {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    width: 7%;
+  }
+}
+@media screen and (max-width: 331px) {
+  .settings {
+    position: absolute;
+    right: 4%;
+    top: 4%;
+    width: 8%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .image-sent-cont {
+    max-width: 80%;
+    padding: 0.8rem;
+  }
+  .chat-room {
+    display: none;
+  }
+  .Mapbox-map {
+    width: 260px;
+    height: 195px;
+    border-radius: 1rem;
+  }
+
+  .message {
+    border-radius: 1rem;
+    font-size: calc(1.7rem + 1vw);
+  }
+  #sendLocation {
+    order: 2;
+    margin-right: calc(1rem + 2vw);
+    border-radius: 1rem;
+    padding: 0.7rem;
+  }
+  #sendLocation svg {
+    width: 27px;
+    height: 28px;
+  }
+  #fileLabel {
+    margin-right: 1rem;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+  #chattingForm input {
+    border-radius: 1rem;
+    font-size: calc(1rem + 1vw);
+    padding: 1.2rem;
+  }
+  #shareSpan,
+  #sendBtn {
+    display: none;
+  }
+  .logo {
+    display: none;
+  }
+  .chat-room-mobile {
+    background: #238cee;
+    flex: 5 1 20rem;
+    height: 100%;
+    display: block;
+  }
+  .settings {
+    display: none;
+  }
+  .nav {
+    padding: unset;
+    justify-content: flex-start;
+    min-height: unset;
+  }
+  .settings-mobile {
+    display: block;
+    padding: 1rem;
+  }
+  .settings-mobile svg {
+    width: 28px;
+    height: 28px;
+  }
+  #chattingForm {
+    margin-left: calc(1rem + 2vw);
+  }
+  #imgUploadIcon {
+    width: 22px;
+    height: 21px;
+  }
+}
