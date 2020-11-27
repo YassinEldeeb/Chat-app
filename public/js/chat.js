@@ -9,12 +9,14 @@ const chatDiv = document.querySelector(".chat-messages")
 const imageUploadIcon = document.querySelector("#fileLabel")
 const iconImage = document.querySelector("#imgUploadIcon")
 
+input.focus()
+
 if (localStorage.getItem("dir") !== []) {
   const dir = localStorage.getItem("dir")
-  input.style.direction = dir
   if (dir === "RTL") {
-    input.placeholder = "ارسل الرسالة"
+    input.style.direction = dir
   } else if (dir === "LTR") {
+    input.style.direction = dir
     input.placeholder = "Message"
   }
 }
@@ -39,6 +41,17 @@ class message {
     if (type === "text") {
       const text = document.createElement("p")
       text.innerText = content
+      if (
+        content !== "Joined" &&
+        content !== "a user has left!" &&
+        content !== "a new user has joined!"
+      ) {
+        console.log(content, content !== "Joined")
+        text.setAttribute("dir", localStorage.getItem("dir"))
+      } else {
+        text.setAttribute("dir", "LTR")
+      }
+
       text.classList.add("message-text")
       chatDiv.append(div)
       div.append(text)
