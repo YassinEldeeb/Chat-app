@@ -323,8 +323,8 @@ class emojiLibrary {
 
     if (spansOfMemory !== []) {
       spansOfMemory.forEach((e) => {
-        e.stopPropagation()
         e.addEventListener("click", (e) => {
+          e.stopPropagation()
           input.value += e.target.innerText
         })
       })
