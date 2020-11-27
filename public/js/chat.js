@@ -105,14 +105,12 @@ input.addEventListener("input", keypress)
 function keypress(e) {
   function myFunction(x) {
     if (x.matches) {
-      const sendMobileBtn = document.querySelector("#sendBtn-mobile")
-
       if (input.value !== "") {
-        sendMobileBtn.classList.add("sendBtn-mobile-active")
+        sendBtnMobile.classList.add("sendBtn-mobile-active")
         imageUploadIcon.classList.add("fileLabel-disabled")
         imageUploadIcon.classList.add("fileLabel-transition-ready")
       } else {
-        sendMobileBtn.classList.remove("sendBtn-mobile-active")
+        sendBtnMobile.classList.remove("sendBtn-mobile-active")
         imageUploadIcon.classList.remove("fileLabel-disabled")
         imageUploadIcon.classList.add("fileLabel-active")
       }
@@ -148,10 +146,10 @@ messageForm.addEventListener("submit", (e) => {
     sendBtnMobile.classList.remove("sendingMessage")
     sendBtn.classList.remove("sendingMessage")
     input.value = ""
-    sendMobileBtn.classList.remove("sendBtn-mobile-active")
+    sendBtnMobile.classList.remove("sendBtn-mobile-active")
     imageUploadIcon.classList.remove("fileLabel-disabled")
     imageUploadIcon.classList.add("fileLabel-active")
-
+    console.log("yeeeh")
     input.focus()
     if (error) {
       return console.log(error)
