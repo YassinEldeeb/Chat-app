@@ -5,6 +5,8 @@
   font-family: "Rubik", sans-serif;
   scrollbar-width: thin;
   scroll-behavior: smooth;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

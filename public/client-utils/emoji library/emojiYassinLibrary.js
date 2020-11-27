@@ -136,6 +136,7 @@ class emojiLibrary {
 
       handIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
       handsEmojis.classList.add("typ-emoji-active")
       humansEmojis.classList.remove("typ-emoji-active")
@@ -167,6 +168,7 @@ class emojiLibrary {
       }
       faceIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
 
       historyBtnIcon.classList.remove("typ-emoji-active")
@@ -186,6 +188,7 @@ class emojiLibrary {
       historyBtnIcon.classList.remove("typ-emoji-active")
       humanIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
     })
     clothesEmojis.addEventListener("click", () => {
@@ -201,6 +204,7 @@ class emojiLibrary {
       historyBtnIcon.classList.remove("typ-emoji-active")
       clothesIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
     })
     natureEmojis.addEventListener("click", () => {
@@ -219,6 +223,7 @@ class emojiLibrary {
       historyBtnIcon.classList.remove("typ-emoji-active")
       natureIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
     })
     loveEmojis.addEventListener("click", () => {
@@ -236,6 +241,7 @@ class emojiLibrary {
       historyBtnIcon.classList.remove("typ-emoji-active")
       loveIcons.scrollIntoView({
         behavior: "smooth",
+        block: "center",
       })
     })
     //!

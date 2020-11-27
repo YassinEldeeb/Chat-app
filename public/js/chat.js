@@ -9,6 +9,16 @@ const chatDiv = document.querySelector(".chat-messages")
 const imageUploadIcon = document.querySelector("#fileLabel")
 const iconImage = document.querySelector("#imgUploadIcon")
 
+if (localStorage.getItem("dir") !== []) {
+  const dir = localStorage.getItem("dir")
+  input.style.direction = dir
+  if (dir === "RTL") {
+    input.placeholder = "ارسل الرسالة"
+  } else if (dir === "LTR") {
+    input.placeholder = "Message"
+  }
+}
+
 //?Message Template
 class message {
   constructor(content, time, type = "text") {
@@ -75,7 +85,7 @@ function checkRTL(s) {
 
   return rtlDirCheck.test(s)
 }
-
+//
 input.addEventListener("input", keypress)
 
 function keypress(e) {
@@ -83,12 +93,13 @@ function keypress(e) {
     let isRTL = checkRTL(input.value)
     let dir = isRTL ? "RTL" : "LTR"
 
+    localStorage.setItem("dir", dir)
     input.style.direction = dir
 
     if (e.charCode == 32) dir = "SPACE"
   }, 0)
 }
-
+//
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault()
   sendBtn.setAttribute("disabled", "disabled")
