@@ -99,6 +99,7 @@ class emojiLibrary {
     })
     const body = document.querySelector("html")
     body.addEventListener("click", (e) => {
+      input.focus()
       e.stopPropagation()
       if (
         !e.target.classList.contains("drawer-active") &&
@@ -111,7 +112,6 @@ class emojiLibrary {
       ) {
         emojiIcon.classList.remove("emoji-icon-active")
         drawer.classList.remove("drawer-active")
-        input.focus()
       }
     })
     const handIcons = document.querySelectorAll(".emoji-icon-add-one")[104]
