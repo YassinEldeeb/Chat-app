@@ -23,7 +23,7 @@ html {
   word-wrap: break-word;
 }
 .message {
-  max-width: 60%;
+  max-width: 40vw;
   border-radius: 2rem;
   display: inline-block;
   margin: 1rem 0;
@@ -340,6 +340,7 @@ html {
   .message {
     border-radius: 1rem;
     font-size: calc(1.7rem + 1vw);
+    max-width: 60vw;
   }
   #sendLocation {
     order: 2;
