@@ -92,12 +92,14 @@ class emojiLibrary {
     const historyEmojis = document.querySelector(".historyEmojis")
     historyEmojis.classList.add("typ-emoji-active")
     emojiIcon.addEventListener("click", (e) => {
+      input.focus()
       e.stopPropagation()
       drawer.classList.toggle("drawer-active")
       emojiIcon.classList.toggle("emoji-icon-active")
     })
     const body = document.querySelector("html")
     body.addEventListener("click", (e) => {
+      input.focus()
       e.stopPropagation()
       if (
         !e.target.classList.contains("drawer-active") &&
