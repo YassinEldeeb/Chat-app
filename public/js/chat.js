@@ -86,7 +86,7 @@ function keypress(e) {
     input.style.direction = dir
 
     if (e.charCode == 32) dir = "SPACE"
-  }, 50)
+  }, 0)
 }
 
 messageForm.addEventListener("submit", (e) => {
