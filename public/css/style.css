@@ -230,7 +230,7 @@ html {
 }
 .imageUploadIcon-active {
   pointer-events: none !important;
-  background: #238ceed1 !important;
+  background: #238ceeb0 !important;
   cursor: unset !important;
   transition: 0.5s ease-in-out !important;
 }
