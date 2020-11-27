@@ -234,6 +234,9 @@ html {
   cursor: unset !important;
   transition: 0.5s ease-in-out !important;
 }
+.imageUploadIcon-active2 {
+  background: transparent !important;
+}
 .info {
   display: flex;
   justify-content: space-between;

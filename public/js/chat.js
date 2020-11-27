@@ -231,7 +231,7 @@ inputElement.addEventListener("change", (e) => {
   iconImage.classList.add("progress-Image")
 
   imageUploadIcon.classList.add("imageUploadIcon-active")
-  sendBtnMobile.classList.add("imageUploadIcon-active")
+  sendBtnMobile.classList.add("imageUploadIcon-active2")
   const compress = new Compress()
   compress
     .compress([...e.target.files], {
@@ -245,7 +245,7 @@ inputElement.addEventListener("change", (e) => {
       console.log("Processed")
       socket.emit("sendImage", file[0].data, () => {
         iconImage.classList.remove("progress-Image")
-        sendBtnMobile.classList.remove("imageUploadIcon-active")
+        sendBtnMobile.classList.remove("imageUploadIcon-active2")
         imageUploadIcon.classList.remove("imageUploadIcon-active")
         console.log("image sent!!")
       })
