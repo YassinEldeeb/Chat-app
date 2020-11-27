@@ -96,26 +96,24 @@ class emojiLibrary {
       e.stopPropagation()
       drawer.classList.toggle("drawer-active")
       emojiIcon.classList.toggle("emoji-icon-active")
-      //
-      const body = document.querySelector("html")
-      body.addEventListener("click", (e) => {
-        e.stopPropagation()
-        if (
-          !e.target.classList.contains("drawer-active") &&
-          !e.target.classList.contains("emoji-icon-add-one") &&
-          !e.target.classList.contains("emojis") &&
-          !e.target.classList.contains("type") &&
-          !e.target.classList.contains("drawer") &&
-          !e.target.parentElement.classList.contains("historyEmojisDiv") &&
-          !e.target.classList.contains("historyEmojisDiv")
-        ) {
-          emojiIcon.classList.remove("emoji-icon-active")
-          drawer.classList.remove("drawer-active")
-          input.focus()
-        }
-      })
     })
-
+    const body = document.querySelector("html")
+    body.addEventListener("click", (e) => {
+      e.stopPropagation()
+      if (
+        !e.target.classList.contains("drawer-active") &&
+        !e.target.classList.contains("emoji-icon-add-one") &&
+        !e.target.classList.contains("emojis") &&
+        !e.target.classList.contains("type") &&
+        !e.target.classList.contains("drawer") &&
+        !e.target.parentElement.classList.contains("historyEmojisDiv") &&
+        !e.target.classList.contains("historyEmojisDiv")
+      ) {
+        emojiIcon.classList.remove("emoji-icon-active")
+        drawer.classList.remove("drawer-active")
+        input.focus()
+      }
+    })
     const handIcons = document.querySelectorAll(".emoji-icon-add-one")[104]
     let faceIcons
     const humanIcons = document.querySelectorAll(".emoji-icon-add-one")[150]
