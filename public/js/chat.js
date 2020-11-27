@@ -140,6 +140,7 @@ messageForm.addEventListener("submit", (e) => {
   sendBtnMobile.setAttribute("disabled", "disabled")
   sendBtn.classList.add("sendingMessage")
   sendBtnMobile.classList.add("sendingMessage")
+  input.focus()
 
   socket.emit("sendMessage", input.value, (error) => {
     sendBtn.removeAttribute("disabled")
@@ -147,6 +148,10 @@ messageForm.addEventListener("submit", (e) => {
     sendBtnMobile.classList.remove("sendingMessage")
     sendBtn.classList.remove("sendingMessage")
     input.value = ""
+    sendMobileBtn.classList.remove("sendBtn-mobile-active")
+    imageUploadIcon.classList.remove("fileLabel-disabled")
+    imageUploadIcon.classList.add("fileLabel-active")
+
     input.focus()
     if (error) {
       return console.log(error)
