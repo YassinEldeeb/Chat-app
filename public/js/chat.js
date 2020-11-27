@@ -66,6 +66,29 @@ socket.on("image", (file) => {
   new message(file.text, file.createdAt, "image")
 })
 
+function checkRTL(s) {
+  let ltrChars =
+      "A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF" +
+      "\u2C00-\uFB1C\uFDFE-\uFE6F\uFEFD-\uFFFF",
+    rtlChars = "\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC",
+    rtlDirCheck = new RegExp("^[^" + ltrChars + "]*[" + rtlChars + "]")
+
+  return rtlDirCheck.test(s)
+}
+
+input.addEventListener("input", keypress)
+
+function keypress(e) {
+  setTimeout(function () {
+    let isRTL = checkRTL(input.value)
+    let dir = isRTL ? "RTL" : "LTR"
+
+    input.style.direction = dir
+
+    if (e.charCode == 32) dir = "SPACE"
+  }, 50)
+}
+
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault()
   sendBtn.setAttribute("disabled", "disabled")

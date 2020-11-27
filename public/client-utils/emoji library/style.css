@@ -103,22 +103,23 @@ html {
   position: absolute;
   right: 0;
   top: 50%;
-  transform: translate(-5%, -43%) rotate(-180deg);
+  transform: translate(-20%, -43%) rotate(-180deg);
   cursor: pointer;
   font-size: 2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  padding-left: 2.1rem;
+  padding-left: 1.3rem;
   padding-right: 0;
+
   webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
 }
 .emoji-icon-active {
-  padding-right: 2.1rem;
+  padding-right: 1.3rem;
   padding-left: 0;
-  transform: translate(-5%, -55%) rotate(0deg);
+  transform: translate(-20%, -55%) rotate(0deg);
 }
 
 .typ-emoji-active {

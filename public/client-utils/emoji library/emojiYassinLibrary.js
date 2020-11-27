@@ -97,21 +97,24 @@ class emojiLibrary {
       drawer.classList.toggle("drawer-active")
       emojiIcon.classList.toggle("emoji-icon-active")
     })
+
     const body = document.querySelector("html")
     body.addEventListener("click", (e) => {
-      input.focus()
-      e.stopPropagation()
-      if (
-        !e.target.classList.contains("drawer-active") &&
-        !e.target.classList.contains("emoji-icon-add-one") &&
-        !e.target.classList.contains("emojis") &&
-        !e.target.classList.contains("type") &&
-        !e.target.classList.contains("drawer") &&
-        !e.target.parentElement.classList.contains("historyEmojisDiv") &&
-        !e.target.classList.contains("historyEmojisDiv")
-      ) {
-        emojiIcon.classList.remove("emoji-icon-active")
-        drawer.classList.remove("drawer-active")
+      if (drawer.classList.contains("drawer-active")) {
+        input.focus()
+        e.stopPropagation()
+        if (
+          !e.target.classList.contains("drawer-active") &&
+          !e.target.classList.contains("emoji-icon-add-one") &&
+          !e.target.classList.contains("emojis") &&
+          !e.target.classList.contains("type") &&
+          !e.target.classList.contains("drawer") &&
+          !e.target.parentElement.classList.contains("historyEmojisDiv") &&
+          !e.target.classList.contains("historyEmojisDiv")
+        ) {
+          emojiIcon.classList.remove("emoji-icon-active")
+          drawer.classList.remove("drawer-active")
+        }
       }
     })
     const handIcons = document.querySelectorAll(".emoji-icon-add-one")[104]
@@ -249,7 +252,7 @@ class emojiLibrary {
           )
         } else {
           historyEmoji = JSON.parse(localStorage.getItem("emojiHistory"))
-          historyEmoji.length = 12
+          historyEmoji.length = 13
           historyEmoji.forEach((one, index1) => {
             if (e.target.innerText === one) {
               console.log(one)
@@ -258,7 +261,6 @@ class emojiLibrary {
               }
             }
           })
-
           historyEmoji.unshift(e.target.innerText)
           localStorage.setItem("emojiHistory", JSON.stringify(historyEmoji))
         }
