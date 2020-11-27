@@ -173,7 +173,20 @@ html {
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
+.put-on-top {
+  position: relative;
+}
 #fileLabel {
+  position: relative;
+}
+#sendBtn-mobile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+#fileLabel,
+#sendBtn-mobile {
   border-radius: 0.6rem;
   background: #238cee;
   padding: 1.4rem;
@@ -239,6 +252,53 @@ html {
 }
 .location-message {
   max-width: unset;
+}
+#sendBtn-mobile {
+  display: none;
+}
+#imgUploadIcon {
+  transition: unset;
+}
+#fileLabel {
+  z-index: 1;
+}
+.fileLabel-transition-ready svg {
+  transition: all 0.3s !important;
+}
+.fileLabel-active svg {
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sendBtn-mobile svg {
+  transform: scale(0.7);
+  transition: all 0.3s !important;
+}
+.fileLabel-disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+#fileLabel.fileLabel-disabled svg {
+  transform: rotate(0deg) translateY(0%) scale(0.7);
+}
+#sendBtn-mobile svg {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#sendBtn-mobile.sendBtn-mobile-active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+#sendBtn-mobile.sendBtn-mobile-active svg {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: all;
+}
+.send-image-send-combination {
+  position: relative;
 }
 @keyframes rotatingImage {
   from {
@@ -354,7 +414,8 @@ html {
     width: 27px;
     height: 28px;
   }
-  #fileLabel {
+  #fileLabel,
+  #sendBtn-mobile {
     margin-right: 1rem;
     border-radius: 1rem;
     padding: 1rem;
@@ -368,6 +429,9 @@ html {
   #shareSpan,
   #sendBtn {
     display: none;
+  }
+  #sendBtn-mobile {
+    display: block;
   }
   .logo {
     display: none;
@@ -397,7 +461,8 @@ html {
   #chattingForm {
     margin-left: calc(1rem + 2vw);
   }
-  #imgUploadIcon {
+  #imgUploadIcon,
+  #send-mobile-icon {
     width: 22px;
     height: 21px;
   }

@@ -8,6 +8,7 @@ const locationBtn = document.querySelector("#sendLocation")
 const chatDiv = document.querySelector(".chat-messages")
 const imageUploadIcon = document.querySelector("#fileLabel")
 const iconImage = document.querySelector("#imgUploadIcon")
+const sendBtnMobile = document.querySelector("#sendBtn-mobile")
 
 input.focus()
 
@@ -102,6 +103,26 @@ function checkRTL(s) {
 input.addEventListener("input", keypress)
 
 function keypress(e) {
+  function myFunction(x) {
+    if (x.matches) {
+      const sendMobileBtn = document.querySelector("#sendBtn-mobile")
+
+      if (input.value !== "") {
+        sendMobileBtn.classList.add("sendBtn-mobile-active")
+        imageUploadIcon.classList.add("fileLabel-disabled")
+        imageUploadIcon.classList.add("fileLabel-transition-ready")
+      } else {
+        sendMobileBtn.classList.remove("sendBtn-mobile-active")
+        imageUploadIcon.classList.remove("fileLabel-disabled")
+        imageUploadIcon.classList.add("fileLabel-active")
+      }
+    }
+  }
+
+  let x = window.matchMedia("(max-width: 750px)")
+  myFunction(x)
+  x.addListener(myFunction)
+
   setTimeout(function () {
     let isRTL = checkRTL(input.value)
     let dir = isRTL ? "RTL" : "LTR"
@@ -116,10 +137,14 @@ function keypress(e) {
 messageForm.addEventListener("submit", (e) => {
   e.preventDefault()
   sendBtn.setAttribute("disabled", "disabled")
+  sendBtnMobile.setAttribute("disabled", "disabled")
   sendBtn.classList.add("sendingMessage")
+  sendBtnMobile.classList.add("sendingMessage")
 
   socket.emit("sendMessage", input.value, (error) => {
     sendBtn.removeAttribute("disabled")
+    sendBtnMobile.removeAttribute("disabled")
+    sendBtnMobile.classList.remove("sendingMessage")
     sendBtn.classList.remove("sendingMessage")
     input.value = ""
     input.focus()
