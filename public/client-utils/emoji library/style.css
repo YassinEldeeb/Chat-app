@@ -167,7 +167,7 @@ html {
     transform: translateY(8%);
   }
   .deleteIcon {
-    transform: translateY(-8%);
+    transform: translateY(-13%);
   }
 }
 @media screen and (max-width: 750px) {
