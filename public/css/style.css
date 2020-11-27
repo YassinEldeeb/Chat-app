@@ -270,8 +270,11 @@ html {
   opacity: 1;
   pointer-events: all;
 }
-
+button {
+  border: none;
+}
 #sendBtn-mobile svg {
+  pointer-events: none;
   transform: scale(0.7);
   transition: all 0.3s !important;
 }
@@ -280,6 +283,7 @@ html {
   pointer-events: none;
 }
 #fileLabel.fileLabel-disabled svg {
+  pointer-events: none;
   transform: rotate(0deg) translateY(0%) scale(0.7);
 }
 #sendBtn-mobile svg {
