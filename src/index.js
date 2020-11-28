@@ -10,7 +10,7 @@ const app = express()
 const server = http.createServer(app)
 const io = socketio(server, {
   pingInterval: 10000,
-  pingTimeout: 10,
+  pingTimeout: 99999999,
 })
 
 const port = process.env.PORT || 3000
