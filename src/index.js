@@ -47,6 +47,9 @@ io.on("connection", (socket) => {
 
     callback()
   })
+  socket.on("voiceRecorded", (audio) => {
+    io.emit("voice", generateMessage(audio))
+  })
 
   socket.on("disconnect", () => {
     io.emit("message", generateMessage("a user has left!"))
