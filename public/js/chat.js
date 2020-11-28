@@ -77,7 +77,9 @@ class message {
       chatDiv.append(div)
     } else if (type === "record") {
       const audioE = document.createElement("audio")
-      audioE.src = content
+      const audioBlob = new Blob(content)
+      const audioUrl = URL.createObjectURL(audioBlob)
+      audioE.src = audioUrl
       audioE.setAttribute("controls", "true")
 
       div.append(audioE)

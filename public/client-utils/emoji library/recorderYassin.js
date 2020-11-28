@@ -43,9 +43,7 @@ function recordAudio() {
 
             Start.classList.add("startRec")
             mediaRecorder.addEventListener("stop", () => {
-              const audioBlob = new Blob(audioChunks)
-              const audioUrl = URL.createObjectURL(audioBlob)
-              socket.emit("voiceRecorded", audioUrl)
+              socket.emit("voiceRecorded", audioChunks)
             })
 
             stream.getTracks().forEach((track) => {
