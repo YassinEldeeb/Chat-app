@@ -8,7 +8,10 @@ const { generateMessage } = require("./utils/messages")
 const app = express()
 
 const server = http.createServer(app)
-const io = socketio(server)
+const io = socketio(server, {
+  pingInterval: 10000,
+  pingTimeout: 5000,
+})
 
 const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, "../public")
@@ -41,6 +44,7 @@ io.on("connection", (socket) => {
   })
   socket.on("sendImage", (file, callback) => {
     io.emit("image", generateMessage(file))
+
     callback()
   })
 
