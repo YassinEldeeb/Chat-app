@@ -19,15 +19,11 @@ audio {
   font-size: 1.8rem;
   color: white;
 }
-.helperRec {
-  position: relative;
-  right: 6%;
-  bottom: 8%;
-}
+
 .recording-cont {
-  position: absolute;
-  right: 4%;
-  bottom: 0%;
+  position: fixed;
+  right: 3%;
+  bottom: 16%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,12 +66,15 @@ audio {
   align-items: center;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+  transition: all 0.1s;
 }
 .startRecordingButton:hover {
   background: #238ceef5;
 }
 .startRec {
   padding: 1.1rem 1.64rem;
+  border-top-left-radius: 10rem;
+  border-bottom-left-radius: 10rem;
 }
 
 a {
@@ -111,7 +110,6 @@ html {
   padding: 1rem;
 }
 .chat-messages {
-  position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
