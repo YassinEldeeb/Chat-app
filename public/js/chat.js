@@ -75,15 +75,6 @@ class message {
       div.append(div1)
       div.classList.add("image-sent-cont")
       chatDiv.append(div)
-    } else if (type === "record") {
-      const audioE = document.createElement("audio")
-      const audioBlob = new Blob(content)
-      const audioUrl = URL.createObjectURL(audioBlob)
-      audioE.src = audioUrl
-      audioE.setAttribute("controls", "true")
-
-      div.append(audioE)
-      chatDiv.append(div)
     }
   }
 }
@@ -97,9 +88,6 @@ socket.on("location", (link) => {
 })
 socket.on("image", (file) => {
   new message(file.text, file.createdAt, "image")
-})
-socket.on("voice", (voice) => {
-  new message(voice.text, voice.createdAt, "record")
 })
 
 function checkRTL(s) {
@@ -268,5 +256,3 @@ const inputChatIcons = document.querySelector("#chattingForm .div input")
 console.log(inputChatIcons)
 
 new emojiLibrary(inputChatIcons)
-//
-recordAudio()

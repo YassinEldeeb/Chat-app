@@ -9,7 +9,7 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-audio {
+/* audio {
   border-radius: 10rem;
   background: #000000;
 }
@@ -75,7 +75,7 @@ audio {
   padding: 1.1rem 1.64rem;
   border-top-left-radius: 10rem;
   border-bottom-left-radius: 10rem;
-}
+} */
 
 a {
   color: rgb(56, 56, 56);

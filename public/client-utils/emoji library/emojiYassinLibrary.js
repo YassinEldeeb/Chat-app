@@ -251,6 +251,15 @@ class emojiLibrary {
     allEmojies.forEach((e) => {
       e.addEventListener("click", (e) => {
         input.value += e.target.innerText
+        if (input.value !== "") {
+          sendBtnMobile.classList.add("sendBtn-mobile-active")
+          imageUploadIcon.classList.add("fileLabel-disabled")
+          imageUploadIcon.classList.add("fileLabel-transition-ready")
+        } else {
+          sendBtnMobile.classList.remove("sendBtn-mobile-active")
+          imageUploadIcon.classList.remove("fileLabel-disabled")
+          imageUploadIcon.classList.add("fileLabel-active")
+        }
         if (!localStorage.getItem("emojiHistory")) {
           localStorage.setItem(
             "emojiHistory",
@@ -315,6 +324,15 @@ class emojiLibrary {
           spansOfMemory.forEach((e) => {
             e.addEventListener("click", (e) => {
               input.value += e.target.innerText
+              if (input.value !== "") {
+                sendBtnMobile.classList.add("sendBtn-mobile-active")
+                imageUploadIcon.classList.add("fileLabel-disabled")
+                imageUploadIcon.classList.add("fileLabel-transition-ready")
+              } else {
+                sendBtnMobile.classList.remove("sendBtn-mobile-active")
+                imageUploadIcon.classList.remove("fileLabel-disabled")
+                imageUploadIcon.classList.add("fileLabel-active")
+              }
             })
           })
         }
@@ -324,6 +342,15 @@ class emojiLibrary {
     const deleteBtn = document.querySelector(".deleteIcon")
     deleteBtn.addEventListener("click", () => {
       input.value = input.value.slice(0, -2)
+      if (input.value !== "") {
+        sendBtnMobile.classList.add("sendBtn-mobile-active")
+        imageUploadIcon.classList.add("fileLabel-disabled")
+        imageUploadIcon.classList.add("fileLabel-transition-ready")
+      } else {
+        sendBtnMobile.classList.remove("sendBtn-mobile-active")
+        imageUploadIcon.classList.remove("fileLabel-disabled")
+        imageUploadIcon.classList.add("fileLabel-active")
+      }
     })
     //
     //
@@ -333,6 +360,15 @@ class emojiLibrary {
       spansOfMemory.forEach((e) => {
         e.addEventListener("click", (e) => {
           input.value += e.target.innerText
+          if (input.value !== "") {
+            sendBtnMobile.classList.add("sendBtn-mobile-active")
+            imageUploadIcon.classList.add("fileLabel-disabled")
+            imageUploadIcon.classList.add("fileLabel-transition-ready")
+          } else {
+            sendBtnMobile.classList.remove("sendBtn-mobile-active")
+            imageUploadIcon.classList.remove("fileLabel-disabled")
+            imageUploadIcon.classList.add("fileLabel-active")
+          }
         })
       })
     }
