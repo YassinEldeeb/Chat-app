@@ -251,15 +251,23 @@ class emojiLibrary {
     allEmojies.forEach((e) => {
       e.addEventListener("click", (e) => {
         input.value += e.target.innerText
-        if (input.value !== "") {
-          sendBtnMobile.classList.add("sendBtn-mobile-active")
-          imageUploadIcon.classList.add("fileLabel-disabled")
-          imageUploadIcon.classList.add("fileLabel-transition-ready")
-        } else {
-          sendBtnMobile.classList.remove("sendBtn-mobile-active")
-          imageUploadIcon.classList.remove("fileLabel-disabled")
-          imageUploadIcon.classList.add("fileLabel-active")
+        function myFunction(x) {
+          if (x.matches) {
+            if (input.value !== "") {
+              sendBtnMobile.classList.add("sendBtn-mobile-active")
+              imageUploadIcon.classList.add("fileLabel-disabled")
+              imageUploadIcon.classList.add("fileLabel-transition-ready")
+            } else {
+              sendBtnMobile.classList.remove("sendBtn-mobile-active")
+              imageUploadIcon.classList.remove("fileLabel-disabled")
+              imageUploadIcon.classList.add("fileLabel-active")
+            }
+          }
         }
+        var x = window.matchMedia("(max-width: 750px)")
+        myFunction(x)
+        x.addListener(myFunction)
+
         if (!localStorage.getItem("emojiHistory")) {
           localStorage.setItem(
             "emojiHistory",
@@ -324,15 +332,22 @@ class emojiLibrary {
           spansOfMemory.forEach((e) => {
             e.addEventListener("click", (e) => {
               input.value += e.target.innerText
-              if (input.value !== "") {
-                sendBtnMobile.classList.add("sendBtn-mobile-active")
-                imageUploadIcon.classList.add("fileLabel-disabled")
-                imageUploadIcon.classList.add("fileLabel-transition-ready")
-              } else {
-                sendBtnMobile.classList.remove("sendBtn-mobile-active")
-                imageUploadIcon.classList.remove("fileLabel-disabled")
-                imageUploadIcon.classList.add("fileLabel-active")
+              function myFunction(x) {
+                if (x.matches) {
+                  if (input.value !== "") {
+                    sendBtnMobile.classList.add("sendBtn-mobile-active")
+                    imageUploadIcon.classList.add("fileLabel-disabled")
+                    imageUploadIcon.classList.add("fileLabel-transition-ready")
+                  } else {
+                    sendBtnMobile.classList.remove("sendBtn-mobile-active")
+                    imageUploadIcon.classList.remove("fileLabel-disabled")
+                    imageUploadIcon.classList.add("fileLabel-active")
+                  }
+                }
               }
+              var x = window.matchMedia("(max-width: 700px)")
+              myFunction(x)
+              x.addListener(myFunction)
             })
           })
         }
@@ -342,24 +357,8 @@ class emojiLibrary {
     const deleteBtn = document.querySelector(".deleteIcon")
     deleteBtn.addEventListener("click", () => {
       input.value = input.value.slice(0, -2)
-      if (input.value !== "") {
-        sendBtnMobile.classList.add("sendBtn-mobile-active")
-        imageUploadIcon.classList.add("fileLabel-disabled")
-        imageUploadIcon.classList.add("fileLabel-transition-ready")
-      } else {
-        sendBtnMobile.classList.remove("sendBtn-mobile-active")
-        imageUploadIcon.classList.remove("fileLabel-disabled")
-        imageUploadIcon.classList.add("fileLabel-active")
-      }
-    })
-    //
-    //
-    const spansOfMemory = historyEmojisDiv.querySelectorAll("span")
-
-    if (spansOfMemory !== []) {
-      spansOfMemory.forEach((e) => {
-        e.addEventListener("click", (e) => {
-          input.value += e.target.innerText
+      function myFunction(x) {
+        if (x.matches) {
           if (input.value !== "") {
             sendBtnMobile.classList.add("sendBtn-mobile-active")
             imageUploadIcon.classList.add("fileLabel-disabled")
@@ -369,6 +368,39 @@ class emojiLibrary {
             imageUploadIcon.classList.remove("fileLabel-disabled")
             imageUploadIcon.classList.add("fileLabel-active")
           }
+        }
+      }
+
+      var x = window.matchMedia("(max-width: 750px)")
+      myFunction(x)
+      x.addListener(myFunction)
+    })
+    //
+    //
+    const spansOfMemory = historyEmojisDiv.querySelectorAll("span")
+
+    if (spansOfMemory !== []) {
+      spansOfMemory.forEach((e) => {
+        e.addEventListener("click", (e) => {
+          input.value += e.target.innerText
+
+          function myFunction(x) {
+            if (x.matches) {
+              if (input.value !== "") {
+                sendBtnMobile.classList.add("sendBtn-mobile-active")
+                imageUploadIcon.classList.add("fileLabel-disabled")
+                imageUploadIcon.classList.add("fileLabel-transition-ready")
+              } else {
+                sendBtnMobile.classList.remove("sendBtn-mobile-active")
+                imageUploadIcon.classList.remove("fileLabel-disabled")
+                imageUploadIcon.classList.add("fileLabel-active")
+              }
+            }
+          }
+
+          var x = window.matchMedia("(max-width: 700px)")
+          myFunction(x)
+          x.addListener(myFunction)
         })
       })
     }

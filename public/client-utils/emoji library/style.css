@@ -140,7 +140,7 @@ html {
 .emojis-enabled {
   display: grid;
 }
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .historyEmojisDiv {
     min-height: 200px;
   }
