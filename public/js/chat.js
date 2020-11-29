@@ -64,7 +64,7 @@ class message {
       if (
         content !== "Joined🥳" &&
         !content.includes("has joined😃") &&
-        !content.includes("has joined😃")
+        !content.includes("has left😟")
       ) {
         console.log(content, content !== "Joined")
         text.setAttribute("dir", localStorage.getItem("dir"))
