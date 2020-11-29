@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Rubik", cairo, sans-serif;
+  font-family: "Rubik", sans-serif;
   scrollbar-width: thin;
   scroll-behavior: smooth;
   outline: none;
@@ -33,7 +33,6 @@ html {
   background: whitesmoke;
   font-size: calc(0.8rem + 1vw);
 }
-
 .Mapbox-map {
   width: 400px;
   height: 300px;
@@ -74,12 +73,12 @@ html {
   border-top-left-radius: 0;
 }
 .timestamp {
-  font-size: calc(0.7rem + 1vw);
+  font-size: calc(0.2rem + 1vw);
   font-weight: 300;
   color: #777777;
 }
 .sender {
-  font-size: calc(0.8rem + 1vw);
+  font-size: calc(0.3rem + 1vw);
   margin-right: calc(0.1rem + 0.5vw);
 
   color: #333333;
@@ -346,9 +345,6 @@ button {
     top: 3%;
     width: 5%;
   }
-  .message {
-    padding: 0.7rem 1.4rem;
-  }
 }
 @media screen and (max-width: 600px) {
   .settings {
@@ -397,6 +393,12 @@ button {
   }
 }
 @media screen and (max-width: 750px) {
+  .sender {
+    font-size: calc(0.8rem + 1vw);
+  }
+  .timestamp {
+    font-size: calc(0.7rem + 1vw);
+  }
   .image-sent-cont {
     max-width: 80%;
     padding: 0.8rem;
@@ -412,8 +414,9 @@ button {
 
   .message {
     border-radius: 1rem;
-    font-size: calc(1.2rem + 1vw);
+    font-size: calc(1.7rem + 1vw);
     max-width: 68vw;
+    padding: 0.7rem 1.4rem;
   }
   #sendLocation {
     order: 2;
@@ -433,7 +436,7 @@ button {
   }
   #chattingForm input {
     border-radius: 1rem;
-    font-size: calc(1.1rem + 1vw);
+    font-size: calc(1rem + 1vw);
     padding: 1.2rem;
     padding-right: 5.1rem;
   }
@@ -477,19 +480,26 @@ button {
     width: 22px;
     height: 21px;
   }
+  .message-text {
+    font-size: calc(1.2rem + 1vw);
+  }
 }
-.me {
+.me,
+.location-message {
   background: #238cee;
   align-self: flex-end;
   color: white;
 }
 .me .sender {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.8);
 }
 .me .timestamp {
-  color: rgba(255, 255, 255, 0.67) !important;
+  color: rgba(255, 255, 255, 0.67);
 }
 .me .image-added {
   border-top-right-radius: 0 !important;
   border-top-left-radius: 2rem !important;
+}
+.me a {
+  color: rgb(255, 255, 255);
 }
