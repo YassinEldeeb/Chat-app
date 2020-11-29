@@ -12,6 +12,19 @@ const sendBtnMobile = document.querySelector("#sendBtn-mobile")
 
 input.focus()
 
+//QueryString
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true,
+})
+const me = username.slice(0, 1).toUpperCase() + username.slice(1)
+
+socket.emit("join", { username, room }, (error) => {
+  if (error) {
+    alert(error)
+    location.href = "/"
+  }
+})
+
 if (localStorage.getItem("dir") !== []) {
   const dir = localStorage.getItem("dir")
   if (dir === "RTL") {
@@ -24,14 +37,20 @@ if (localStorage.getItem("dir") !== []) {
 
 //?Message Template
 class message {
-  constructor(content, time, type = "text") {
+  constructor(content, time, type = "text", senderName) {
     const div = document.createElement("div")
     div.classList.add("message")
     const info = document.createElement("div")
     info.classList.add("info")
     const sender = document.createElement("p")
     sender.classList.add("sender")
-    sender.innerText = "Sender"
+    if (senderName === me) {
+      div.classList.add("me")
+      sender.innerText = "me"
+    } else {
+      sender.innerText = senderName
+    }
+
     info.append(sender)
     const timeStamp = document.createElement("p")
     timeStamp.classList.add("timestamp")
@@ -43,9 +62,9 @@ class message {
       const text = document.createElement("p")
       text.innerText = content
       if (
-        content !== "Joined" &&
-        content !== "a user has left!" &&
-        content !== "a new user has joined!"
+        content !== "Joined🥳" &&
+        !content.includes("has joined😃") &&
+        !content.includes("has joined😃")
       ) {
         console.log(content, content !== "Joined")
         text.setAttribute("dir", localStorage.getItem("dir"))
@@ -80,14 +99,14 @@ class message {
 }
 socket.on("message", (msg) => {
   console.log(msg)
-  new message(msg.text, msg.createdAt)
+  new message(msg.text, msg.createdAt, "text", msg.sender)
 })
 socket.on("location", (link) => {
   console.log(link)
-  new message(link.text, link.createdAt, "location")
+  new message(link.text, link.createdAt, "location", link.sender)
 })
 socket.on("image", (file) => {
-  new message(file.text, file.createdAt, "image")
+  new message(file.text, file.createdAt, "image", file.sender)
 })
 
 function checkRTL(s) {

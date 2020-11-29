@@ -4,6 +4,12 @@ const express = require("express")
 const socketio = require("socket.io")
 const Filter = require("bad-words")
 const { generateMessage } = require("./utils/messages")
+const {
+  addUser,
+  removeUser,
+  getUser,
+  getUsersInRoom,
+} = require("./utils/users")
 
 const app = express()
 
@@ -19,10 +25,27 @@ const publicDirectoryPath = path.join(__dirname, "../public")
 app.use(express.static(publicDirectoryPath))
 
 io.on("connection", (socket) => {
+  let defaultSender = "Room"
   console.log("New Socket is connected")
 
-  socket.broadcast.emit("message", generateMessage("a new user has joined!"))
-  socket.emit("message", generateMessage("Joined"))
+  socket.on("join", (options, callback) => {
+    const { error, user } = addUser({ id: socket.id, ...options })
+    if (error) {
+      return callback(error)
+    }
+    socket.join(user.room)
+
+    socket.emit("message", generateMessage("Joined🥳", defaultSender))
+    socket.broadcast
+      .to(user.room)
+      .emit(
+        "message",
+        generateMessage(`${user.username} has joined😃`, defaultSender),
+        user.username
+      )
+
+    callback()
+  })
 
   socket.on("sendMessage", (msg, callback) => {
     const filter = new Filter()
@@ -30,26 +53,38 @@ io.on("connection", (socket) => {
       return callback("Profanity isn't allowed! (Bad W*rd)")
     }
 
-    io.emit("message", generateMessage(msg))
+    const { username, room } = getUser(socket.id)
+    io.to(room).emit("message", generateMessage(msg, username))
     callback()
   })
   socket.on("sendLocation", ({ latitude, longitude }, callback) => {
-    io.emit(
+    const { username, room } = getUser(socket.id)
+    io.to(room).emit(
       "location",
-      generateMessage(`https://google.com/maps/?q=${latitude},${longitude}`)
+      generateMessage(
+        `https://google.com/maps/?q=${latitude},${longitude}`,
+        username
+      )
     )
     callback()
-    io.emit("mapbox", { latitude, longitude })
+    io.to(room).emit("mapbox", { latitude, longitude })
     socket.emit("mapboxSet")
   })
   socket.on("sendImage", (file, callback) => {
-    io.emit("image", generateMessage(file))
+    const { username, room } = getUser(socket.id)
+    io.to(room).emit("image", generateMessage(file, username))
 
     callback()
   })
 
   socket.on("disconnect", () => {
-    io.emit("message", generateMessage("a user has left!"))
+    const user = removeUser(socket.id)
+    if (user) {
+      io.to(user.room).emit(
+        "message",
+        generateMessage(`${user.username} has left😟`, defaultSender)
+      )
+    }
   })
 })
 
