@@ -44,6 +44,10 @@ io.on("connection", (socket) => {
         user.username
       )
 
+    io.to(user.room).emit("roomMembers", {
+      room: user.room,
+      members: getUsersInRoom(user.room),
+    })
     callback()
   })
 
@@ -84,6 +88,10 @@ io.on("connection", (socket) => {
         "message",
         generateMessage(`${user.username} has left😟`, defaultSender)
       )
+      io.to(user.room).emit("roomMembers", {
+        room: user.room,
+        members: getUsersInRoom(user.room),
+      })
     }
   })
 })

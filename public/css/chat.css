@@ -9,6 +9,42 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.chat-room {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.member,
+.room-title {
+  color: white;
+  font-size: calc(0.8rem + 1vw);
+  background: rgba(35, 140, 238, 0.03);
+  width: 100%;
+  text-align: center;
+  padding: calc(0.3rem + 1vw);
+  font-family: "Poppins";
+}
+.room-title {
+  background: #238cee;
+  padding: calc(1.2rem + 1vw) 0;
+  font-size: calc(1.1rem + 1vw);
+}
+.member-animation {
+  animation: member-added 0.1s ease-in-out forwards;
+}
+
+@keyframes member-added {
+  from {
+    font-size: calc(0.7rem + 1vw);
+    opacity: 0.9;
+    padding: calc(0.2rem + 1vw);
+  }
+  to {
+    font-size: calc(0.8rem + 1vw);
+    padding: calc(0.3rem + 1vw);
+  }
+}
 a {
   color: rgb(56, 56, 56);
 }
@@ -392,7 +428,50 @@ button {
     width: 8%;
   }
 }
+.mobile-room-title,
+.mobile-room-members,
+.mobile-member {
+  display: none;
+}
 @media screen and (max-width: 750px) {
+  .mobile-room-title {
+    display: block !important;
+    color: white;
+    text-align: center;
+    font-size: calc(2.2rem + 1vw);
+  }
+  .mobile-room-members {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 88vh;
+    background: rgba(51, 55, 68, 0.99);
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    overflow-y: scroll;
+    transform: translateY(-30%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+    transition: 0.2s ease-in-out;
+  }
+  .mobile-room-members-active {
+    transform: translateY(0%);
+    opacity: 1;
+    pointer-events: all;
+  }
+  .mobile-member {
+    color: white;
+    font-family: "Poppins", "ElMessiri", sans-serif;
+    text-align: center;
+    width: 100%;
+    font-size: calc(2.3rem + 1vw);
+    padding: calc(1.9rem + 1vw);
+    background: #323949ca;
+    display: block !important;
+  }
   .sender {
     font-size: calc(0.8rem + 1vw);
   }
@@ -451,10 +530,13 @@ button {
     display: none;
   }
   .chat-room-mobile {
+    cursor: pointer;
     background: #238cee;
     flex: 5 1 20rem;
     height: 100%;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .settings {
     display: none;
@@ -463,10 +545,12 @@ button {
     padding: unset;
     justify-content: flex-start;
     min-height: unset;
+    height: 12vh;
+    z-index: 5;
   }
   .settings-mobile {
     display: block;
-    padding: 1rem;
+    padding: 2rem;
   }
   .settings-mobile svg {
     width: 28px;
@@ -482,6 +566,19 @@ button {
   }
   .message-text {
     font-size: calc(1.2rem + 1vw);
+  }
+}
+@media screen and (max-width: 370px) {
+  #chattingForm input {
+    padding: 1.2rem 0.8rem;
+    padding-right: 0.9rem;
+    padding-right: 3.7rem;
+  }
+  #chattingForm {
+    margin-left: calc(0.3rem + 2vw);
+  }
+  #sendingLocation {
+    margin-right: calc(0.3rem + 2vw);
   }
 }
 .me,

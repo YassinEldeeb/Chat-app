@@ -97,6 +97,46 @@ class message {
     }
   }
 }
+const membersMobileDiv = document.querySelector(".mobile-room-members")
+
+function roomMembers(room, members) {
+  const container = document.querySelector(".chat-room")
+  const membersContainer = container.getElementsByClassName("member")
+  const mobileTitle = document.querySelector(".mobile-room-title")
+
+  container.innerHTML = ""
+  membersMobileDiv.innerHTML = ""
+  mobileTitle.innerText = room
+
+  const title = document.createElement("h1")
+  title.classList.add("room-title")
+  title.innerText = room
+  container.append(title)
+
+  members.forEach((member) => {
+    const memberSpan = document.createElement("span")
+    memberSpan.classList.add("member")
+    memberSpan.innerText = member.username
+    container.append(memberSpan)
+  })
+  members.forEach((member) => {
+    const memberSpan = document.createElement("span")
+    memberSpan.classList.add("mobile-member")
+    memberSpan.innerText = member.username
+    membersMobileDiv.append(memberSpan)
+  })
+
+  console.log(membersContainer.length, membersContainer)
+  if (membersContainer.length > 1) {
+    let lastMember = membersContainer[membersContainer.length - 1]
+    console.log(membersContainer)
+    lastMember.classList.add("member-animation")
+  }
+}
+const mobileChatRoom = document.querySelector(".chat-room-mobile")
+mobileChatRoom.addEventListener("click", () => {
+  membersMobileDiv.classList.toggle("mobile-room-members-active")
+})
 socket.on("message", (msg) => {
   console.log(msg)
   new message(msg.text, msg.createdAt, "text", msg.sender)
@@ -107,6 +147,9 @@ socket.on("location", (link) => {
 })
 socket.on("image", (file) => {
   new message(file.text, file.createdAt, "image", file.sender)
+})
+socket.on("roomMembers", ({ room, members }) => {
+  roomMembers(room, members)
 })
 
 function checkRTL(s) {
@@ -173,6 +216,7 @@ messageForm.addEventListener("submit", (e) => {
     if (error) {
       return console.log(error)
     }
+
     console.log("Message delivered!")
   })
 })
