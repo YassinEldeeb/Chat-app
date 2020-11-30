@@ -132,10 +132,12 @@ function roomMembers(room, members) {
     lastMember.classList.add("member-animation")
   }
 }
+
 const mobileChatRoom = document.querySelector(".chat-room-mobile")
 mobileChatRoom.addEventListener("click", () => {
   membersMobileDiv.classList.toggle("mobile-room-members-active")
 })
+
 socket.on("message", (msg) => {
   console.log(msg)
   new message(msg.text, msg.createdAt, "text", msg.sender)
@@ -247,6 +249,7 @@ socket.on("mapbox", ({ latitude, longitude }) => {
   //?Message Template
   const div = document.createElement("div")
   div.classList.add("message")
+
   div.classList.add("location-message")
   div.append(mapDiv)
   chatDiv.append(div)
