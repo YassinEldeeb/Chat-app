@@ -25,6 +25,24 @@ socket.emit("join", { username, room }, (error) => {
   }
 })
 
+function autoScroll() {
+  setTimeout(() => {
+    const newMessage = chatDiv.lastChild
+
+    let messageHeight = newMessage.offsetHeight
+    let messageStyles = getComputedStyle(newMessage)
+    let fullMessageHeight =
+      parseInt(messageStyles.marginBottom) * 2 + messageHeight
+
+    const visibleMessageContHeight = chatDiv.offsetHeight + 10
+    const scrolledDistance = chatDiv.scrollTop + visibleMessageContHeight
+    const fullChatDivHeight = chatDiv.scrollHeight
+    console.log(fullMessageHeight)
+    if (fullChatDivHeight - fullMessageHeight <= scrolledDistance) {
+      chatDiv.scrollTop = fullChatDivHeight
+    }
+  }, 10)
+}
 if (localStorage.getItem("dir") !== []) {
   const dir = localStorage.getItem("dir")
   if (dir === "RTL") {
@@ -141,10 +159,12 @@ mobileChatRoom.addEventListener("click", () => {
 socket.on("message", (msg) => {
   console.log(msg)
   new message(msg.text, msg.createdAt, "text", msg.sender)
+  autoScroll()
 })
 socket.on("location", (link) => {
   console.log(link)
   new message(link.text, link.createdAt, "location", link.sender)
+  autoScroll()
 })
 socket.on("image", (file) => {
   new message(file.text, file.createdAt, "image", file.sender)
@@ -270,6 +290,7 @@ socket.on("mapbox", ({ latitude, longitude }) => {
   new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map)
   socket.on("mapboxSet", () => {
     console.log("map set to everybody successfully")
+    autoScroll()
   })
   counter++
 })
@@ -313,6 +334,8 @@ inputElement.addEventListener("change", (e) => {
         sendBtnMobile.classList.remove("imageUploadIcon-active2")
         imageUploadIcon.classList.remove("imageUploadIcon-active")
         console.log("image sent!!")
+
+        autoScroll()
       })
     })
 })

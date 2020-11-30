@@ -4,7 +4,6 @@
   box-sizing: border-box;
   font-family: "Rubik", "El Messiri", sans-serif;
   scrollbar-width: thin;
-  scroll-behavior: smooth;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
