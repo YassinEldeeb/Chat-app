@@ -490,12 +490,15 @@ button {
     height: 195px;
     border-radius: 1rem;
   }
-
   .message {
     border-radius: 1rem;
     font-size: calc(1.7rem + 1vw);
     max-width: 68vw;
     padding: 0.7rem 1.4rem;
+  }
+  .location-message {
+    padding: 0.7rem;
+    max-width: unset;
   }
   #sendLocation {
     order: 2;
@@ -582,11 +585,12 @@ button {
   }
 }
 .me,
-.location-message {
+.me + .location-message {
   background: #09f;
   align-self: flex-end;
   color: white;
 }
+
 .me .sender {
   color: rgba(255, 255, 255, 0.8);
 }

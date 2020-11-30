@@ -82,7 +82,6 @@ class message {
       link.setAttribute("target", "_blank")
 
       div.append(link)
-
       chatDiv.append(div)
     } else if (type === "image") {
       let img = document.createElement("img")
