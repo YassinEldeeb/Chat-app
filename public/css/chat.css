@@ -604,3 +604,7 @@ button {
 .me a {
   color: rgb(255, 255, 255);
 }
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib.mapboxgl-compact {
+  display: none !important;
+}
