@@ -451,7 +451,7 @@ button {
     align-items: center;
     flex-direction: column;
     overflow-y: scroll;
-    transform: translateY(-5%);
+    transform: translateY(-2%);
     opacity: 0;
     pointer-events: none;
     z-index: 3;
